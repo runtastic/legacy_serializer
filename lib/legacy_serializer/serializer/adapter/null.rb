@@ -1,4 +1,4 @@
-module ActiveModel
+module LegacySerializer
   class Serializer
     class Adapter
       class Null < Adapter

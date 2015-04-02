@@ -1,4 +1,4 @@
-# ActiveModel::Serializers
+# LegacySerializer, derived from ActiveModel::Serializers
 
 [![Build Status](https://travis-ci.org/rails-api/active_model_serializers.svg)](https://travis-ci.org/rails-api/active_model_serializers)
 

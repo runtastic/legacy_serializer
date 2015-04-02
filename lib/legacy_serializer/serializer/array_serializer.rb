@@ -1,4 +1,4 @@
-module ActiveModel
+module LegacySerializer
   class Serializer
     class ArraySerializer
       include Enumerable
@@ -8,7 +8,7 @@ module ActiveModel
         @objects = objects.map do |object|
           serializer_class = options.fetch(
             :serializer,
-            ActiveModel::Serializer.serializer_for(object)
+            LegacySerializer::Serializer.serializer_for(object)
           )
           serializer_class.new(object)
         end

@@ -1,4 +1,4 @@
-module ActiveModel
+module LegacySerializer
   class Serializer
     extend ActiveSupport::Autoload
     autoload :Configuration
@@ -90,7 +90,7 @@ module ActiveModel
     def self.adapter
       adapter_class = case config.adapter
       when Symbol
-        ActiveModel::Serializer::Adapter.adapter_class(config.adapter)
+        LegacySerializer::Serializer::Adapter.adapter_class(config.adapter)
       when Class
         config.adapter
       end
@@ -143,7 +143,7 @@ module ActiveModel
       self.class._associations.dup.each do |name, options|
         association = object.send(name)
         serializer_class = options[:options][:serializer] if association
-        serializer_class ||= ActiveModel::Serializer.serializer_for(association)
+        serializer_class ||= LegacySerializer::Serializer.serializer_for(association)
 
         serializer = serializer_class.new(association) if serializer_class
 

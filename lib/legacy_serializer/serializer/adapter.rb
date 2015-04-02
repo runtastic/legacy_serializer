@@ -1,4 +1,4 @@
-module ActiveModel
+module LegacySerializer
   class Serializer
     class Adapter
       extend ActiveSupport::Autoload
@@ -23,12 +23,12 @@ module ActiveModel
 
       def self.create(resource, options = {})
         override = options.delete(:adapter)
-        klass = override ? adapter_class(override) : ActiveModel::Serializer.adapter
+        klass = override ? adapter_class(override) : LegacySerializer::Serializer.adapter
         klass.new(resource, options)
       end
 
       def self.adapter_class(adapter)
-        "ActiveModel::Serializer::Adapter::#{adapter.to_s.classify}".safe_constantize
+        "LegacySerializer::Serializer::Adapter::#{adapter.to_s.classify}".safe_constantize
       end
     end
   end

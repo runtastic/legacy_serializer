@@ -1,16 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'active_model/serializer/version'
+require 'legacy_serializer/serializer/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "active_model_serializers"
-  spec.version       = ActiveModel::Serializer::VERSION
+  spec.name          = "legacy_serializer"
+  spec.version       = LegacySerializer::Serializer::VERSION
   spec.authors       = ["Steve Klabnik"]
   spec.email         = ["steve@steveklabnik.com"]
   spec.summary       = %q{Conventions-based JSON generation for Rails.}
-  spec.description   = %q{ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.}
-  spec.homepage      = "https://github.com/rails-api/active_model_serializers"
+  spec.homepage      = "https://github.com/runtastic/legacy_serializer"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
