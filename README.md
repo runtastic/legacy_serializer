@@ -1,8 +1,8 @@
-# LegacySerializer, derived from ActiveModel::Serializers
+# LegacySerializer, derived from LegacySerializer::Serializers
 
 [![Build Status](https://travis-ci.org/rails-api/active_model_serializers.svg)](https://travis-ci.org/rails-api/active_model_serializers)
 
-ActiveModel::Serializers brings convention over configuration to your JSON generation.
+LegacySerializer::Serializers brings convention over configuration to your JSON generation.
 
 AMS does this through two components: **serializers** and **adapters**. Serializers describe which attributes and relationships should be serialized. Adapters describe how attributes and relationships should be serialized.
 
@@ -32,7 +32,7 @@ Given two models, a `Post(title: string, body: text)` and a
 serializers:
 
 ```ruby
-class PostSerializer < ActiveModel::Serializer
+class PostSerializer < LegacySerializer::Serializer
   attributes :title, :body
 
   has_many :comments
@@ -44,7 +44,7 @@ end
 and
 
 ```ruby
-class CommentSerializer < ActiveModel::Serializer
+class CommentSerializer < LegacySerializer::Serializer
   attributes :name, :body
 
   belongs_to :post
@@ -59,13 +59,13 @@ by AMS. If you want to use a different adapter, such as a HalAdapter, you can
 change this in an initializer:
 
 ```ruby
-ActiveModel::Serializer.config.adapter = ActiveModel::Serializer::Adapter::HalAdapter
+LegacySerializer::Serializer.config.adapter = LegacySerializer::Serializer::Adapter::HalAdapter
 ```
 
 or
 
 ```ruby
-ActiveModel::Serializer.config.adapter = :hal
+LegacySerializer::Serializer.config.adapter = :hal
 ```
 
 You won't need to implement an adapter unless you wish to use a new format or
@@ -74,7 +74,7 @@ media type with AMS.
 If you would like the key in the outputted JSON to be different from its name in ActiveRecord, you can use the :key option to customize it:
 
 ```ruby
-class PostSerializer < ActiveModel::Serializer
+class PostSerializer < LegacySerializer::Serializer
   attributes :id, :body
 
   # look up :subject on the model, but use +title+ in the JSON
@@ -164,7 +164,7 @@ The generated seralizer will contain basic `attributes` and
 `has_many`/`belongs_to` declarations, based on the model. For example:
 
 ```ruby
-class PostSerializer < ActiveModel::Serializer
+class PostSerializer < LegacySerializer::Serializer
   attributes :title, :body
 
   has_many :comments
@@ -176,7 +176,7 @@ end
 and
 
 ```ruby
-class CommentSerializer < ActiveModel::Serializer
+class CommentSerializer < LegacySerializer::Serializer
   attributes :name, :body
 
   belongs_to :post_id
